@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/monifyapp/static/css/main.1033a9d6.css",
-    "main.js": "/monifyapp/static/js/main.a8ed9b5e.js",
+    "main.js": "/monifyapp/static/js/main.39975092.js",
     "index.html": "/monifyapp/index.html",
     "main.1033a9d6.css.map": "/monifyapp/static/css/main.1033a9d6.css.map",
-    "main.a8ed9b5e.js.map": "/monifyapp/static/js/main.a8ed9b5e.js.map"
+    "main.39975092.js.map": "/monifyapp/static/js/main.39975092.js.map"
   },
   "entrypoints": [
     "static/css/main.1033a9d6.css",
-    "static/js/main.a8ed9b5e.js"
+    "static/js/main.39975092.js"
   ]
 }
