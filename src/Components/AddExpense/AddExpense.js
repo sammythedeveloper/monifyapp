@@ -412,6 +412,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
           )}
         </form>
       </div>
+
   );
 };
 

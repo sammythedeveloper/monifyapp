@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -6,125 +6,78 @@ import {
   LinearScale,
   BarElement,
   Tooltip,
-  Legend,
+  Title,
 } from "chart.js";
 
-// Register necessary components
-ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Legend);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Tooltip, Title);
 
 const ExpenseChart = ({ expenses }) => {
-  const chartRef = useRef(null); // Use ref to manage chart instance
-
-  // Categorize expenses by type and sum them
   const categorizedExpenses = expenses.reduce((acc, expense) => {
-    if (!acc[expense.category]) {
-      acc[expense.category] = 0;
-    }
+    if (!acc[expense.category]) acc[expense.category] = 0;
     acc[expense.category] += expense.amount;
     return acc;
   }, {});
 
+  const categories = Object.keys(categorizedExpenses);
+
   const data = {
-    labels: Object.keys(categorizedExpenses), // Categories
+    labels: categories,
     datasets: [
       {
-        label: "Expenses by Category",
-        data: Object.values(categorizedExpenses), // Amounts
-        backgroundColor: [
-          "rgba(0, 255, 255, 0.8)", // Light Blue
-          "rgba(255, 165, 0, 1)", // Coral
-          "rgba(34, 193, 34, 1)", // Light Green
-          "rgba(255, 221, 51, 1)", // Yellow
-          "rgba(255, 105, 180, 1)", // Lavender
-        ],
-        borderColor: [
-          "rgba(99, 184, 255, 1)", // Light Blue
-          "rgba(253, 137, 111, 1)", // Coral
-          "rgba(110, 196, 120, 1)", // Light Green
-          "rgba(255, 199, 55, 1)", // Yellow
-          "rgba(187, 98, 255, 1)", // Lavender
-        ],
-        borderWidth: 0, // Remove border for a cleaner look
-        barThickness: 35, // Make bars thinner
-        hoverBackgroundColor: [
-          "rgba(99, 184, 255, 1)",
-          "rgba(253, 137, 111, 1)",
-          "rgba(110, 196, 120, 1)",
-          "rgba(255, 199, 55, 1)",
-          "rgba(187, 98, 255, 1)",
-        ], // Hover color effect
+        label: "Expenses",
+        data: Object.values(categorizedExpenses),
+        backgroundColor: "rgba(55,65,81,1)", // dark zinc background
+        borderColor: "rgba(168,85,247,1)",   // purple border
+        borderWidth: 1.5,
+        borderRadius: 50, // max radius for tube/capsule
+        barPercentage: 0.6, // thinner tube-like bar
+        categoryPercentage: 0.8,
+        hoverBackgroundColor: "rgba(55,65,81,1)",
+        maxBarThickness: 40,
       },
     ],
   };
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
-      legend: {
-        position: "top",
-        labels: {
-          font: {
-            size: 14, // Adjust font size of legend
-            weight: "bold", // Bold the legend text
-            color: "#333",
-          },
-        },
-      },
+      legend: { display: false },
       tooltip: {
-        backgroundColor: "rgba(0, 0, 0, 0.8)", // Dark background for tooltips
-        titleColor: "#fff",
+        backgroundColor: "#18181b",
+        titleColor: "#a855f7",
         bodyColor: "#fff",
-        bodyFont: {
-          weight: "bold",
+        bodyFont: { weight: "500" },
+        callbacks: {
+          label: (context) => `$${context.raw.toLocaleString()}`,
         },
+        padding: 10,
       },
       title: {
         display: true,
-        text: "Expense Distribution by Category",
-        font: {
-          size: 18,
-          weight: "bold",
-        },
-        color: "#333",
+        text: "Expenses by Category",
+        color: "#fff",
+        font: { size: 18, weight: "bold" },
+        padding: { top: 10, bottom: 20 },
       },
     },
     scales: {
       x: {
-        beginAtZero: true, // Start the x-axis from zero
-        ticks: {
-          color: "#fff",
-          font: {
-            weight: 460,
-            size: 18, // Adjust font size of x-axis labels
-          },
-        },
+        grid: { display: false },
+        ticks: { color: "#e5e5e5", font: { size: 14, weight: "500" } },
       },
       y: {
-        beginAtZero: true, // Start the y-axis from zero
-        ticks: {
-          color: "#fff",
-          font: {
-            size: 18, // Adjust font size of y-axis labels
-            weight: 460,
-          },
-        },
+        grid: { color: "rgba(255,255,255,0.05)" },
+        ticks: { display: false }, // hide numbers
       },
     },
   };
 
-  // Clean up the chart instance on component unmount or before re-render
-  useEffect(() => {
-    const chart = chartRef.current?.chartInstance;
-    if (chart) {
-      chart.destroy();
-    }
-  }, [expenses]); // Recreate the chart whenever expenses change
-
   return (
     <div className="flex items-center justify-center py-10">
-      <div className="w-full max-w-3xl p-6  rounded-lg">
-        <div className="w-full h-80 sm:h-96 md:h-[400px] lg:h-[500px]">
-          <Bar ref={chartRef} data={data} options={options} />
+      <div className="w-full max-w-3xl">
+        <div className="w-full h-80 sm:h-96 md:h-[400px] lg:h-[450px] rounded-xl shadow-lg shadow-purple-500/50">
+          <Bar data={data} options={options} />
         </div>
       </div>
     </div>
