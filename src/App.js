@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import AddExpense from "./Components/AddExpense/AddExpense";
 import ExpenseList from "./Components/ExpenseList/ExpenseList";
 import EditExpense from "./Components/EditExpense/EditExpense";
