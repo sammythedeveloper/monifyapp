@@ -4,11 +4,11 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/f
 const Footer = () => {
   return (
     <footer className=" mt-64 " >
-      <div className="max-w-screen-xl mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 ml-16 ">
+      <div className="max-w-screen-xl mx-auto  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 ml-16  ">
         
         {/* About Section */}
         <div className="footer-section">
-          <h3 className="text-xl font-semibold mb-4">About MoneyTrack</h3>
+          <h3 className="text-xl font-semibold mb-4 ">About MoneyTrack</h3>
           <p className="text-gray-400">
             MoneyTrack is your personal finance companion, designed to help you manage and track your expenses, 
             monitor savings, and achieve your financial goals. With intuitive features and real-time tracking, 

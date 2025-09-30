@@ -31,7 +31,7 @@ export const Header = ({ user }) => {
     <header className="sticky top-0 z-40 bg-zinc-900/50 backdrop-blur-lg">
       <div className="container">
         <div className="flex justify-between items-center h-24 md:h-28">
-          <div className="font-heading ml-24 text-4xl text-purple-600 font-bold  ">
+          <div className="font-heading ml-24 text-4xl text-purple-600 font-poppins hover:text-white ">
             <h1>
               <Link to={"/"}>MONIFY </Link>
             </h1>

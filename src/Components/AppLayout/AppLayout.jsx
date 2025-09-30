@@ -4,7 +4,7 @@ import { Hexagon } from "./Hexagon"; // Assuming your design components are reus
 
 const AppLayout = ({ children }) => {
   return (
-    <section className="relative py-96 md:py-52 overflow-x-clip">
+    <section className="relative py-96 md:py-52 overflow-x-clip font-poppins ">
       {/* Background design elements (hexagons and circles) */}
       <div className="absolute inset-0 z-0 flex justify-center ">
         <div className="inline-flex relative  ">

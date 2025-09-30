@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Home = () => {
   return (
     <AppLayout>
-      <p className="uppercase font-extrabold text-center text-zinc-500 tracking-wider">
+      <p className="uppercase font-extrabold text-center text-zinc-500 tracking-wider ">
         Introducing Monify
       </p>
       <h1 className="font-heading font-black text-5xl md:text-6xl lg:text-7xl text-center mt-4 max-w-3xl mx-auto">

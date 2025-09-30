@@ -25,7 +25,7 @@ const paymentMethods = [
 // Recurring frequencies
 const frequencies = ["Daily", "Weekly", "Monthly", "Yearly"];
 
-const currencies = ["USD", "EUR", "GBP", "JPY", "AUD"];
+const currencies = ["CAD", "USD", "BIRR"];
 
 const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
   const [category, setCategory] = useState(categories[0].name);
@@ -159,7 +159,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-6 py-10 text-white">
+    <div className="max-w-4xl mx-auto px-6 py-10 text-white  ">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -182,7 +182,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setCategory(cat.name)}
-            className={`cursor-pointer bg-zinc-800 border rounded-xl p-5 flex flex-col items-center justify-center text-center transition-all ${
+            className={`cursor-pointer bg-zinc-800 border rounded-full p-7 flex flex-col items-center justify-center text-center transition-all ${
               category === cat.name
                 ? "border-purple-500 shadow-lg shadow-purple-500/50 scale-110"
                 : "border-zinc-700"
@@ -198,7 +198,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
 
       <form
         onSubmit={handleSubmit}
-        className="bg-zinc-900 rounded-lg p-8 space-y-6 shadow-lg"
+        className="bg-zinc-900 rounded-full p-8 space-y-6 shadow-lg"
       >
         {/* Title */}
         <div>
@@ -214,7 +214,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="E.g. Coffee with friends"
-            className="w-full p-3 rounded-md bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full p-3 rounded-full bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             required
           />
         </div>
@@ -246,7 +246,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
               val = parts.join("-");
               setDate(val);
             }}
-            className="w-full p-3 rounded-md bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full p-3 rounded-full bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>
 
@@ -266,7 +266,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
               placeholder="Enter amount"
               value={amount}
               onChange={(e) => setAmount(e.target.value)}
-              className="w-full p-3 rounded-md bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-zinc-500"
+              className="w-full p-3 rounded-full bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500 placeholder-zinc-500"
               required
             />
           </div>
@@ -281,7 +281,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
               id="currency"
               value={currency}
               onChange={(e) => setCurrency(e.target.value)}
-              className="w-full p-3 rounded-md bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+              className="w-full p-3 rounded-full bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
             >
               {currencies.map((cur) => (
                 <option key={cur} value={cur}>
@@ -304,7 +304,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
             id="paymentMethod"
             value={paymentMethod}
             onChange={(e) => setPaymentMethod(e.target.value)}
-            className="w-full p-3 rounded-md bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            className="w-full p-3 rounded-full bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
           >
             {paymentMethods.map((method) => (
               <option key={method} value={method}>
@@ -380,7 +380,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder="Additional details (optional)"
-            className="w-full p-3 rounded-md bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
+            className="w-full p-5 rounded-full bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500 resize-none"
           />
         </div>
 

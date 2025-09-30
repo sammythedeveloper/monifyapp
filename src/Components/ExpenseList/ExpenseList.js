@@ -138,22 +138,22 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
                   <span>{getCategoryIcon(expense.category)}</span>
                   {expense.category}
                 </td>
-                <td className="px-4 py-2 text-sm text-white">
+                <td className="px-4 py-2 font-thin text-white">
                   {expense.title}
                 </td>
-                <td className="px-4 py-2 text-sm text-black-400">
+                <td className="px-4 py-2 font-thin  text-black-400">
                   {expense.currency} {Number(expense.amount || 0).toFixed(2)}
                 </td>
-                <td className="px-4 py-2 text-sm text-white">
+                <td className="px-4 py-2 font-thin  text-white">
                   {formatDate(expense.date)}
                 </td>
-                <td className="px-4 py-2 text-sm text-white">
+                <td className="px-4 py-2 font-thin  text-white">
                   {expense.paymentMethod || "-"}
                 </td>
-                <td className="px-4 py-2 text-sm text-purple-400">
+                <td className="px-4 py-2 font-thin  text-white">
                   {expense.isRecurring ? expense.frequency : "-"}
                 </td>
-                <td className="px-4 py-2 font-thin text-white flex flex-wrap gap-1">
+                <td className="px-4 py-2 font-thin  text-white flex flex-wrap gap-1">
                   {(expense.tags || []).map((tag) => (
                     <span
                       key={tag}
