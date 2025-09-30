@@ -60,7 +60,7 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
         {Object.keys(categorizedExpenses).map((category) => (
           <div
             key={category}
-            className="bg-zinc-800 border border-gray-400 rounded-xl p-5 flex justify-between items-center shadow-lg shadow-purple-500/50 transition-all hover:scale-105"
+            className="bg-zinc-800 border border-gray-400 rounded-full p-5 flex justify-between items-center shadow-lg shadow-purple-500/50 transition-all hover:scale-105"
           >
             <div className="flex items-center gap-2">
               <span className="text-base">{getCategoryIcon(category)}</span>
@@ -78,7 +78,7 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
         ))}
 
         {/* Total Expenses */}
-        <div className="bg-zinc-800 border border-gray-400 rounded-xl p-5 flex justify-between items-center shadow-lg shadow-purple-500/50 transition-all hover:scale-105">
+        <div className="bg-zinc-800 border border-gray-400 rounded-full p-5 flex justify-between items-center shadow-lg shadow-purple-500/50 transition-all hover:scale-105">
           <h3 className=" tracking-wider font-thin text-white">
             Total Expenses
           </h3>
@@ -90,8 +90,8 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
 
       {/* Expense Table */}
       <div className="overflow-x-auto rounded-lg">
-        <table className="min-w-full table-auto">
-          <thead className="bg-zinc-800 h-24 font-poppins ">
+        <table className="min-w-full table-auto ">
+          <thead className="bg-zinc-800 h-24 font-poppins">
             <tr>
               <th className=" px-4 py-2 font-thin tracking-wider text-white">
                 Category
@@ -134,7 +134,7 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
                 key={expense.id}
                 className="border-b border-zinc-700 hover:bg-zinc-900 transition-all"
               >
-                <td className="px-4 py-2 text-sm text-white flex items-center gap-1">
+                <td className="px-4 py-2 text-sm bg-slate-300 text-black rounded-full flex items-center gap-1">
                   <span>{getCategoryIcon(expense.category)}</span>
                   {expense.category}
                 </td>
@@ -153,11 +153,11 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
                 <td className="px-4 py-2 text-sm text-purple-400">
                   {expense.isRecurring ? expense.frequency : "-"}
                 </td>
-                <td className="px-4 py-2 text-sm text-white flex flex-wrap gap-1">
+                <td className="px-4 py-2 font-thin text-white flex flex-wrap gap-1">
                   {(expense.tags || []).map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 bg-purple-600 text-white rounded-full text-xs uppercase tracking-wider"
+                      className="px-2 py-0.5 bg-slate-300 text-black rounded-full text-xs uppercase tracking-wider"
                     >
                       #{tag}
                     </span>
@@ -179,14 +179,14 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
                 </td>
                 <td className="px-4 py-2 text-sm text-blue-600">
                   <Link to={`/edit/${expense.id}`}>
-                    <button className="px-3 py-1 bg-transparent text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button className="px-3 py-1 bg-transparent text-white rounded-full hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
                       Edit
                     </button>
                   </Link>
                 </td>
                 <td className="px-4 py-2 text-sm text-red-600">
                   <button
-                    className="px-3 py-1 text-white rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
+                    className="px-3 py-1 text-white rounded-full hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500"
                     onClick={() => deleteExpense(expense.id)}
                   >
                     Delete
