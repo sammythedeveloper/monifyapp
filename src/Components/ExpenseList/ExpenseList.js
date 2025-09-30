@@ -4,7 +4,10 @@ import ExpenseChart from "./ExpenseChart/ExpenseChart";
 import Footer from "../Footer/Footer";
 
 const ExpenseList = ({ expenses, deleteExpense }) => {
-  const totalExpenses = expenses.reduce((acc, expense) => acc + Number(expense.amount || 0), 0);
+  const totalExpenses = expenses.reduce(
+    (acc, expense) => acc + Number(expense.amount || 0),
+    0
+  );
 
   const categorizedExpenses = expenses.reduce((acc, expense) => {
     if (!acc[expense.category]) acc[expense.category] = [];
@@ -42,10 +45,10 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-cover bg-center p-6 font-caveat">
+    <div className="relative w-full min-h-screen bg-cover bg-center p-6 font-poppins">
       <div className="mb-8 text-center">
-        <h1 className="uppercase text-4xl font-extrabold text-white tracking-wider">
-          Your Expense List
+        <h1 className=" text-4xl font-poppins font-thin text-white tracking-wider">
+          YOUR EXPENSE LIST
         </h1>
         <div className="w-full max-w-3xl mx-auto mt-6">
           <ExpenseChart expenses={expenses} />
@@ -57,15 +60,15 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
         {Object.keys(categorizedExpenses).map((category) => (
           <div
             key={category}
-            className="bg-zinc-800 border border-purple-500 rounded-xl p-5 flex justify-between items-center shadow-lg shadow-purple-500/50 transition-all hover:scale-105"
+            className="bg-zinc-800 border border-gray-400 rounded-xl p-5 flex justify-between items-center shadow-lg shadow-purple-500/50 transition-all hover:scale-105"
           >
             <div className="flex items-center gap-2">
-              <span className="text-2xl">{getCategoryIcon(category)}</span>
-              <h3 className="text-lg font-semibold text-white uppercase tracking-wider">
+              <span className="text-base">{getCategoryIcon(category)}</span>
+              <h3 className="text-base font-thin text-white  tracking-wider">
                 {category}
               </h3>
             </div>
-            <p className="text-xl font-bold text-green-400">
+            <p className="text-base font-thin text-black-400">
               $
               {categorizedExpenses[category]
                 .reduce((acc, item) => acc + Number(item.amount || 0), 0)
@@ -75,11 +78,11 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
         ))}
 
         {/* Total Expenses */}
-        <div className="bg-zinc-800 border border-purple-500 rounded-xl p-5 flex justify-between items-center shadow-lg shadow-purple-500/50 transition-all hover:scale-105">
-          <h3 className="uppercase tracking-wider font-semibold text-white">
+        <div className="bg-zinc-800 border border-gray-400 rounded-xl p-5 flex justify-between items-center shadow-lg shadow-purple-500/50 transition-all hover:scale-105">
+          <h3 className=" tracking-wider font-thin text-white">
             Total Expenses
           </h3>
-          <p className="uppercase tracking-wider font-bold text-red-500">
+          <p className=" tracking-wider font-thin text-red-500">
             ${totalExpenses.toFixed(2)}
           </p>
         </div>
@@ -88,39 +91,39 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
       {/* Expense Table */}
       <div className="overflow-x-auto rounded-lg">
         <table className="min-w-full table-auto">
-          <thead className="bg-zinc-800 h-24">
+          <thead className="bg-zinc-800 h-24 font-poppins ">
             <tr>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin tracking-wider text-white">
                 Category
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin tracking-wider text-white">
                 Title
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin tracking-wider text-white">
                 Amount
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin tracking-wider text-white">
                 Date
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin  tracking-wider text-white">
                 Payment
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin  tracking-wider text-white">
                 Recurring
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin  tracking-wider text-white">
                 Tags
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin  tracking-wider text-white">
                 Notes
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin  tracking-wider text-white">
                 Receipt
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin  tracking-wider text-white">
                 Edit
               </th>
-              <th className="uppercase px-4 py-2 text-left text-sm tracking-wider text-white">
+              <th className=" px-4 py-2 font-thin  tracking-wider text-white">
                 Delete
               </th>
             </tr>
@@ -135,14 +138,18 @@ const ExpenseList = ({ expenses, deleteExpense }) => {
                   <span>{getCategoryIcon(expense.category)}</span>
                   {expense.category}
                 </td>
-                <td className="px-4 py-2 text-sm text-white">{expense.title}</td>
-                <td className="px-4 py-2 text-sm text-green-400">
+                <td className="px-4 py-2 text-sm text-white">
+                  {expense.title}
+                </td>
+                <td className="px-4 py-2 text-sm text-black-400">
                   {expense.currency} {Number(expense.amount || 0).toFixed(2)}
                 </td>
                 <td className="px-4 py-2 text-sm text-white">
                   {formatDate(expense.date)}
                 </td>
-                <td className="px-4 py-2 text-sm text-white">{expense.paymentMethod || "-"}</td>
+                <td className="px-4 py-2 text-sm text-white">
+                  {expense.paymentMethod || "-"}
+                </td>
                 <td className="px-4 py-2 text-sm text-purple-400">
                   {expense.isRecurring ? expense.frequency : "-"}
                 </td>
