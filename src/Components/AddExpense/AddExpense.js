@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import AppLayout from "../AppLayout/AppLayout.jsx";
 import { CutCornerButton } from "../Header/CutCornerButton.jsx";
 import { motion } from "framer-motion";
 
@@ -96,11 +95,7 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
   };
 
   // Validate year length in date input (YYYY-MM-DD)
-  const validateDate = (dateStr) => {
-    if (!dateStr) return false;
-    // Regex to validate strict YYYY-MM-DD (4-2-2 format)
-    return /^\d{4}-\d{2}-\d{2}$/.test(dateStr);
-  };
+  const validateDate = (dateStr) => !!Date.parse(dateStr);
 
   // Form submission
   const handleSubmit = (e) => {
@@ -228,24 +223,9 @@ const AddExpense = ({ addExpense, editingExpense, saveEditedExpense }) => {
             Date *
           </label>
           <input
-            type="text"
+            type="date"
             value={date}
-            placeholder="YYYY-MM-DD"
-            maxLength={10} // total length including hyphens
-            onChange={(e) => {
-              let val = e.target.value;
-              // Remove all non-digits and non-hyphens
-              val = val.replace(/[^\d-]/g, "");
-              // Split by hyphen to enforce digit counts
-              let parts = val.split("-");
-              // Limit year, month, day digits
-              if (parts[0]) parts[0] = parts[0].slice(0, 4);
-              if (parts[1]) parts[1] = parts[1].slice(0, 2);
-              if (parts[2]) parts[2] = parts[2].slice(0, 2);
-              // Join back with hyphens
-              val = parts.join("-");
-              setDate(val);
-            }}
+            onChange={(e) => setDate(e.target.value)}
             className="w-full p-3 rounded-full bg-zinc-800 text-white border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
           />
         </div>

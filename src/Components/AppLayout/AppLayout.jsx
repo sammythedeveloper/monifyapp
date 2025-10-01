@@ -21,9 +21,6 @@ const AppLayout = ({ children }) => {
             <Hexagon className="size-[500px]" />
           </div>
           {/* Circles */}
-    
-         
-          
         </div>
       </div>
       {/* Content is above the background elements */}

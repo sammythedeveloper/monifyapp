@@ -68,7 +68,7 @@ const App = () => {
           element={
             <>
               <AddExpense addExpense={addExpense} />
-              <Footer />
+              <Footer/>
             </>
           }
         />

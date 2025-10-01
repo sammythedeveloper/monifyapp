@@ -5,7 +5,7 @@ export const CutCornerButton = (props) => {
   return (
     <button
       className={twMerge(
-        "px-4 py-2 font-thin uppercase font-heading text-sm tracking-wide relative text-white hover:bg-white hover:text-black  ",
+        "px-4 py-2 font-thin uppercase font-heading text-sm tracking-wide relative text-white hover:bg-white hover:text-black rounded-full  ",
         className
       )}
     >

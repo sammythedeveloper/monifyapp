@@ -1,26 +1,6 @@
-// import { Link } from "react-router-dom";
-// import { FaDollarSign } from "react-icons/fa";
-
-// export const Header = () => {
-//   return (
-//     <div className="h-32 flex justify-between items-center px-6 bg-black text-white font-caveat text-2xl">
-//       {/* Logo Section */}
-//       <Link to="/">
-//         <div className="flex items-center text-3xl">
-//           Track <FaDollarSign className="text-white size-8 " />{" "}
-//         </div>
-//       </Link>
-
-//     </div>
-//   );
-// };
-
-// export default Header;
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { CutCornerButton } from "./CutCornerButton";
-// import AddExpense from "../AddExpense/AddExpense";
-// import EditExpense from "../EditExpense/EditExpense"
 
 export const Header = ({ user }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -52,10 +32,10 @@ export const Header = ({ user }) => {
                 // Close (X) icon when menu is open
                 <div className="size-10 relative cursor-pointer">
                   <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-5 h-0.5 bg-zinc-300 rotate-45 translate-x-1.5"></div>
+                    <div className="w-5 h-0.5 bg-zinc-300 rotate-45 translate-x-1.5 "></div>
                   </div>
                   <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-                    <div className="w-5 h-0.5 bg-zinc-300 -rotate-45 translate-x-1.5"></div>
+                    <div className="w-5 h-0.5 bg-zinc-300 -rotate-45 translate-x-1.5 "></div>
                   </div>
                 </div>
               )}
